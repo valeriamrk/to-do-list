@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import MyButton from "../components/MyButton";
-import InputField from "../components/InputField";
-import styles from "./Items.module.css";
 import { v4 as uuidv4 } from "uuid";
 import * as S from "./styles"
+import MyButton from "../../Atoms/Button/MyButton";
+import InputField from "../../Atoms/InputField/InputField";
 
 
-const InputItem = ({ create }) => {
+const AddInput = ({ create }) => {
   const [tasks, setTask] = useState({ value: "" });
 
   const addNewTask = (e) => {
@@ -24,7 +23,7 @@ const InputItem = ({ create }) => {
   
 
   return (
-    <form>
+    <S.AddTaskContainer>
       <S.InputItem>
         <InputField
           value={tasks.value}
@@ -34,8 +33,8 @@ const InputItem = ({ create }) => {
         />
         <MyButton onClick={addNewTask}>Add</MyButton>
       </S.InputItem>
-    </form>
+    </S.AddTaskContainer>
   );
 };
 
-export default InputItem;
+export default AddInput;

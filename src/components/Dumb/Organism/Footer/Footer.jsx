@@ -1,11 +1,12 @@
 import React from "react";
-import MyButton from "../components/MyButton";
+import MyButton from "../../Atoms/Button/MyButton";
+import * as S from "./styles"
 
 const Footer = (props) => {
   return (
-    <div>
+    <S.FooterContainer>
       <MyButton onClick={() => props.removeAllTasks()}>Clear all</MyButton>
-    </div>
+    </S.FooterContainer>
   );
 };
 
