@@ -1,37 +1,32 @@
 import React, { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
-import * as S from "./styles"
+import * as S from "./styles";
 import MyButton from "../../Atoms/Button/MyButton";
 import InputField from "../../Atoms/InputField/InputField";
 
+const AddInput = (props) => {
+  const [valueInput, setValueInput] = useState("");
 
-const AddInput = ({ create }) => {
-  const [tasks, setTask] = useState({ value: "" });
-
-  const addNewTask = (e) => {
+  const addNewTask = (e, valueInput) => {
     e.preventDefault();
 
-    const newTask = {
-      ...tasks,
-      id: uuidv4(),
-    };
+    if (valueInput.length !== 0) {
 
-    create(newTask);
-    setTask({ value: "" });
+      props.addNewTask(valueInput);
+
+      setValueInput("");
+    }
   };
-
-  
 
   return (
     <S.AddTaskContainer>
       <S.InputItem>
         <InputField
-          value={tasks.value}
-          onChange={(e) => setTask({ ...tasks, value: e.target.value })}
+          value={valueInput}
+          onChange={(e) => setValueInput(e.target.value)}
           placeholder="add your task"
           type="text"
         />
-        <MyButton onClick={addNewTask}>Add</MyButton>
+        <MyButton onClick={(e) => addNewTask(e, valueInput)}>Add</MyButton>
       </S.InputItem>
     </S.AddTaskContainer>
   );

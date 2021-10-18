@@ -80,5 +80,6 @@ export const TaskText = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-
+  text-decoration: ${props => props.done ? "line-through" : ""};
+  color: ${props => props.done ? "gray" : ""};
 `;
